@@ -1,27 +1,28 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
 const initialValues = {
   name: "",
   number: "",
 };
 
-export const ContactForm = ({ onAdd }) => {
-  // console.log(onAdd);
-
+export const ContactForm = () => {
+  const dispatch = useDispatch();
   const nameId = uuidv4();
   const numberId = uuidv4();
 
   const handleSumbit = (values, actions) => {
-    // console.log("work", values);
     const newContact = {
       ...values,
       id: uuidv4(),
       name: values.name.trim(),
     };
-    onAdd(newContact);
-    // console.log(newContact);
+    const action = addContact(newContact);
+    dispatch(action);
+
     actions.resetForm();
   };
 
