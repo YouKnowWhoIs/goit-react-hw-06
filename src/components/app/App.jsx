@@ -6,12 +6,10 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div className="container">
-        <h1>Phonebook</h1>
+      <div>
+        <h1 className="phonebook-text">Phonebook</h1>
         <ContactForm />
-
         <SearchBox />
-
         <ContactList />
       </div>
     </>

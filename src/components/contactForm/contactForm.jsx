@@ -47,14 +47,26 @@ export const ContactForm = () => {
     >
       <Form className="contact-form">
         <label htmlFor={nameId}>Name:</label>
-        <Field type="text" name="name" id={nameId} />
+        <Field
+          type="text"
+          name="name"
+          id={nameId}
+          className="form-input"
+          placeholder="Name"
+        />
         <ErrorMessage
           className="error-message-form"
           name="name"
           component="p"
         />
         <label htmlFor={numberId}>Number:</label>
-        <Field type="number" name="number" id={numberId} />
+        <Field
+          type="number"
+          name="number"
+          id={numberId}
+          className="form-input"
+          placeholder="Number"
+        />
         <ErrorMessage
           className="error-message-form"
           name="number"

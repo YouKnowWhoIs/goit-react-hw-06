@@ -4,9 +4,14 @@ import { deleteContact } from "../../redux/contactsSlice";
 
 export const ContactList = () => {
   const selectContacts = useSelector((state) => state.contacts.contacts.items);
+  const test = useSelector((state) => state.filters.filters.name);
+
+  const filterContacts = selectContacts.filter((contact) =>
+    contact.name.toLowerCase().includes(test.toLowerCase())
+  );
   const dispatch = useDispatch();
 
-  console.log(selectContacts);
+  // console.log(filterContact);
 
   const handleOnDelete = (id) => {
     const action = deleteContact(id);
@@ -17,8 +22,8 @@ export const ContactList = () => {
 
   return (
     <ul className="contact-list">
-      {selectContacts.length > 0 ? (
-        selectContacts.map((contact) => (
+      {filterContacts.length > 0 ? (
+        filterContacts.map((contact) => (
           <Contact
             key={contact.id}
             onDelete={handleOnDelete}
